@@ -1,23 +1,30 @@
 import logo from './logo.svg';
 import './App.css';
 
+const promiseObj = {};
+
+
+
+const handlePromise = () => {
+  promiseObj.promise = new Promise((resolve, rejecet) => {
+    promiseObj.resolve = resolve;
+    promiseObj.rejecet = rejecet;
+  });
+
+  setTimeout(() => {
+    alert(promiseObj.resolve);
+    promiseObj.resolve("handlePromise --- resolve");
+  }, 3000);
+  promiseObj.promise.then(res => console.log("promise.then --- res: ", res));
+};
+
+
 function App() {
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <h1>Promise Object</h1>
+      <button onClick={handlePromise}>Trigger Promise</button>
     </div>
   );
 }
